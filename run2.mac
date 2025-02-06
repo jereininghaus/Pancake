@@ -1,0 +1,25 @@
+# Macro file for example B1
+# 
+# To be run preferably in batch, without graphics:
+# % exampleB1 run2.mac
+#
+# Initialize kernel
+/run/initialize
+#
+/control/verbose 2
+/run/verbose 2
+/event/verbose 0
+/tracking/verbose 1
+# 
+/score/create/boxMesh Energy_Dep
+/score/mesh/boxSize 0.5 0.5 0.5 m
+/score/mesh/nBin 1 1 1
+/score/mesh/translate/xyz 0 0 0.5 m
+/score/quantity/energyDeposit eDepScorer
+#/score/filter/particle eDepFilter gamma
+/score/close
+
+/run/beamOn 1
+
+/score/dumpAllQuantitiesToFile Energy_Dep Energy.txt
+
